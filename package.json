@@ -19,6 +19,9 @@
   "homepage": "https://github.com/fabiosn/fabiosn.github.io#readme",
   "devDependencies": {
     "gulp": "^3.9.1",
-    "gulp-clean-css": "^2.3.2"
+    "gulp-clean-css": "^2.3.2",
+    "gulp-jshint": "^2.0.4",
+    "gulp-uglify": "^2.0.0",
+    "jshint-stylish": "^2.2.1"
   }
 }
