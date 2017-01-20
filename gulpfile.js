@@ -35,7 +35,8 @@ gulp.task('process-js', function() {
   .pipe(minify({
     ext: {
       min: '.min.js'
-    }
+    },
+    noSource: true
   }))
   .pipe(gulp.dest('dist/js'));
 });
