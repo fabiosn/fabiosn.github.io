@@ -1,4 +1,5 @@
 var gulp = require('gulp');
+var browserSync = require('browser-sync').create();
 var del = require('del');
 var cleanCSS = require('gulp-clean-css');
 var jshint = require('gulp-jshint');
@@ -42,6 +43,15 @@ gulp.task('process-js', function() {
 });
 
 gulp.task('default', ['move-bower-components', 'minify-css', 'process-js'], function() {
+  browserSync.init({
+    server: {
+      baseDir: './'
+    }
+  });
+
+  gulp.watch('./index.html').on('change', browserSync.reload);
+  gulp.watch('./dist/**/*').on('change', browserSync.reload);
+
   gulp.watch('src/scripts/*.js', ['process-js']);
   gulp.watch('src/resources/css/*.css', ['minify-css']);
 });
