@@ -37,18 +37,15 @@
           <h3 class="text-center">What I've been up to</h3>
 
           <div class="panel panel-default" ng-repeat="repo in repos | orderBy: '-updated_at'">
-            <div class="panel-heading">
-              <h3 class="panel-title">{{repo.name}}</h3>
+            <div class="panel-body">
+              <p ng-if="repo.description">{{repo.description}}</p>
             </div>
 
-            <div class="panel-body">
-              <p>**Project's description</p>
-
-              <p>**Languages:</p>
-              <ul>
-                <li>html</li>
-                <li>css</li>
-                <li>javascript</li>
+            <div class="panel-footer">
+              <a href="{{repo.html_url}}">{{repo.name}}</a>
+              <ul class="list-unstyled list-inline pull-right" ng-if="repo.languages && keys(repo.languages).length > 0">
+                Languages:
+                <li ng-repeat="(language, characters) in repo.languages">{{language}}</li>
               </ul>
             </div>
           </div>

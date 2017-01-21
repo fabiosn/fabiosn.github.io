@@ -28,3 +28,7 @@ body > .container {
   color: black;
   border-radius: 0;
 }
+
+.panel-body > img {
+  padding-bottom: 20px;
+}
