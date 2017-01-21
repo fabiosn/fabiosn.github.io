@@ -38,7 +38,7 @@
 
           <div class="panel panel-default" ng-repeat="repo in repos | orderBy: '-updated_at'">
             <div class="panel-body">
-              <img src="{{repo.thumbnail.download_url}}" alt="{{repo.name}} thumbnail" ng-if="repo.thumbnail">
+              <img class="img-responsive" src="{{repo.thumbnail.download_url}}" alt="{{repo.name}} thumbnail" ng-if="repo.thumbnail">
 
               <p ng-if="repo.description">{{repo.description}}</p>
             </div>
