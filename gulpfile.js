@@ -4,6 +4,7 @@ var del = require('del');
 var cleanCSS = require('gulp-clean-css');
 var jshint = require('gulp-jshint');
 var minify = require('gulp-minify');
+var imagemin = require('gulp-imagemin');
 
 gulp.task('clean', function() {
   del.sync('dist/');
@@ -42,7 +43,13 @@ gulp.task('process-js', function() {
   .pipe(gulp.dest('dist/js'));
 });
 
-gulp.task('default', ['move-bower-components', 'minify-css', 'process-js'], function() {
+gulp.task('process-images', function() {
+  gulp.src('src/resources/images/*')
+  .pipe(imagemin())
+  .pipe(gulp.dest('dist/images'));
+});
+
+gulp.task('default', ['move-bower-components', 'minify-css', 'process-js', 'process-images'], function() {
   browserSync.init({
     server: {
       baseDir: './'
@@ -52,6 +59,7 @@ gulp.task('default', ['move-bower-components', 'minify-css', 'process-js'], func
   gulp.watch('./index.html').on('change', browserSync.reload);
   gulp.watch('./dist/**/*').on('change', browserSync.reload);
 
-  gulp.watch('src/scripts/*.js', ['process-js']);
   gulp.watch('src/resources/css/*.css', ['minify-css']);
+  gulp.watch('src/scripts/*.js', ['process-js']);
+  gulp.watch('src/images/', ['process-images']);
 });

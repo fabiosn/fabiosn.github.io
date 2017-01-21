@@ -13,6 +13,12 @@ app.controller('MainController', ['$scope', '$rootScope', '$http', function($sco
     function(response) {
       $scope.repos = response.data;
       $scope.repos.map(function(repo) {
+        $http.get(repo.contents_url.replace(/{.*}/, 'dist/images/thumbnail.png')).then(
+          function(response) {
+            repo.thumbnail = response.data;
+          }
+        );
+
         $http.get(repo.languages_url).then(
           function(response) {
             repo.languages = response.data;
