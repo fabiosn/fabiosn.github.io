@@ -3,7 +3,15 @@ body {
   color: #CFD8DC;
 }
 
-@media (max-width: 767px) {
+body > .container {
+  margin-top: 20px;
+}
+
+#user-avatar img {
+  border: 5px solid #CFD8DC;
+}
+
+@media (max-width: 1200px) {
   #user-avatar img {
     max-width: 150px;
     display: block;
@@ -14,4 +22,9 @@ body {
   #user-avatar, #user-info {
     text-align: center;
   }
+}
+
+.panel {
+  color: black;
+  border-radius: 0;
 }
