@@ -27,8 +27,13 @@ body > .container {
 .panel {
   color: black;
   border-radius: 0;
+  box-shadow: 2px 2px 3px;
 }
 
 .panel-body > img {
   padding-bottom: 20px;
+}
+
+.panel-footer {
+  overflow: hidden;
 }
