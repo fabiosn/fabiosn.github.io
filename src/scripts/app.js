@@ -12,7 +12,7 @@ app.controller('MainController', ['$scope', '$rootScope', '$http', function($sco
   $http.get('https://api.github.com/users/fabiosn/repos').then(
     function(response) {
       $scope.repos = response.data;
-      $scope.repos.map(function(repo) {
+      $scope.repos.slice(0, 3).map(function(repo) {
         $http.get(repo.contents_url.replace(/{.*}/, 'dist/images/thumbnail.png')).then(
           function(response) {
             repo.thumbnail = response.data;
