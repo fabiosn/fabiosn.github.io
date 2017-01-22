@@ -1,12 +1,6 @@
 var app = angular.module("fabiosnApp", []);
 
 app.controller('MainController', ['$scope', '$rootScope', '$http', function($scope, $rootScope, $http) {
-  var username = "fabiosn";
-  var token = "a00a9e9bda18c2eb26568981adc085ec3afd2b21";
-  var credentials = btoa(username + ':' + token);
-
-  $http.defaults.headers.common.Authorization = 'Basic ' + credentials;
-
   $http.get('https://api.github.com/users/fabiosn').then(
     function(response) {
       $scope.user = response.data;
