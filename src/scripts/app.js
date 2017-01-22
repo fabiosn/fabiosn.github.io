@@ -2,9 +2,8 @@ var app = angular.module("fabiosnApp", []);
 
 app.controller('MainController', ['$scope', '$rootScope', '$http', function($scope, $rootScope, $http) {
   var username = "fabiosn";
-  var token = "304ccd4641d5032e7cf319de857cb06c64a0005d";
+  var token = "a00a9e9bda18c2eb26568981adc085ec3afd2b21";
   var credentials = btoa(username + ':' + token);
-  var authorization = { 'Authorization': 'Basic ' + credentials };
 
   $http.defaults.headers.common.Authorization = 'Basic ' + credentials;
 
