@@ -44,8 +44,10 @@
             </div>
 
             <div class="panel-footer">
-              <a href="{{repo.html_url}}">{{repo.name}}</a>
-              <ul class="list-unstyled list-inline pull-right" ng-if="repo.languages && keys(repo.languages).length > 0">
+              <a href="{{repo.html_url}}">
+                <i class="fa fa-github"></i> {{repo.name}}
+              </a>
+              <ul class="list-unstyled list-inline pull-right small" ng-if="repo.languages && keys(repo.languages).length > 0">
                 Languages:
                 <li ng-repeat="(language, characters) in repo.languages">{{language}}</li>
               </ul>
@@ -56,6 +58,7 @@
     </div>
 
     <link href="dist/css/bootstrap.min.css" rel="stylesheet">
+    <link href="dist/css/font-awesome.min.css" rel="stylesheet">
     <link href="dist/css/styles.css" rel="stylesheet">
 
     <script type="text/javascript" src="dist/js/jquery.min.js"></script>
