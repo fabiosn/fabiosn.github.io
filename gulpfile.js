@@ -78,6 +78,43 @@ gulp.task('get-data', function() {
     console.log(err);
   });
 
+  //get repos data
+  requestOptions.uri = 'https://api.github.com/users/fabiosn/repos';
+
+  request(requestOptions)
+  .then(function(reposData) {
+    return reposData;
+  })
+  .then(function(reposData) {
+    var requestPromises = [];
+
+    reposData.map(function(repo) {
+      requestOptions.uri = repo.contents_url.replace(/{.*}/, 'dist/images/thumbnail.png');
+
+      requestPromises.push(
+        request(requestOptions)
+        .then(function(thumbnailData) {
+          repo.thumbnail = thumbnailData;
+        })
+        .catch(function(err) {
+          console.log(err);
+        })
+      );
+    });
+
+    return Promise.all(requestPromises)
+    .then(function() {
+      return reposData;
+    });
+  })
+  .then(function(reposData) {
+    file('repos.json', JSON.stringify(reposData), { src: true })
+    .pipe(gulp.dest('dist/data'));
+  })
+  .catch(function(err) {
+    console.log(err);
+  });
+
   //just checking the rate_limit
   requestOptions.uri = 'https://api.github.com/rate_limit';
 
