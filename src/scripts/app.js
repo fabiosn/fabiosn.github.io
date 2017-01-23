@@ -1,7 +1,7 @@
 var app = angular.module("fabiosnApp", []);
 
 app.controller('MainController', ['$scope', '$rootScope', '$http', function($scope, $rootScope, $http) {
-  $http.get('https://api.github.com/users/fabiosn').then(
+  $http.get('dist/data/user.json').then(
     function(response) {
       $scope.user = response.data;
     },
@@ -9,7 +9,7 @@ app.controller('MainController', ['$scope', '$rootScope', '$http', function($sco
     }
   );
 
-  $http.get('https://api.github.com/users/fabiosn/repos').then(
+  $http.get('dist/data/repos.json').then(
     function(response) {
       $scope.repos = response.data;
       $scope.repos.slice(0, 3).map(function(repo) {
