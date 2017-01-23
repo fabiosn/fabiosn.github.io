@@ -37,3 +37,7 @@ body > .container {
 .panel-footer {
   overflow: hidden;
 }
+
+.languages {
+  color: gray;
+}

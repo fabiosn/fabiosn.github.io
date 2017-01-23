@@ -47,10 +47,8 @@
               <a href="{{repo.html_url}}">
                 <i class="fa fa-github"></i> {{repo.name}}
               </a>
-              <ul class="list-unstyled list-inline pull-right small" ng-if="repo.languages && keys(repo.languages).length > 0">
-                Languages:
-                <li ng-repeat="(language, characters) in repo.languages">{{language}}</li>
-              </ul>
+
+              <small class="languages pull-right" ng-show="repo.languages && keys(repo.languages).length > 0">[ {{keys(repo.languages).join(', ')}} ]</small>
             </div>
           </div>
         </div>
