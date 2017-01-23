@@ -86,6 +86,7 @@ gulp.task('get-data', function() {
     return reposData;
   })
   .then(function(reposData) {
+    //get thumbnail
     var requestPromises = [];
 
     reposData.map(function(repo) {
@@ -95,6 +96,29 @@ gulp.task('get-data', function() {
         request(requestOptions)
         .then(function(thumbnailData) {
           repo.thumbnail = thumbnailData;
+        })
+        .catch(function(err) {
+          console.log(err);
+        })
+      );
+    });
+
+    return Promise.all(requestPromises)
+    .then(function() {
+      return reposData;
+    });
+  })
+  .then(function(reposData) {
+    //get languages
+    var requestPromises = [];
+
+    reposData.map(function(repo) {
+      requestOptions.uri = repo.languages_url;
+
+      requestPromises.push(
+        request(requestOptions)
+        .then(function(languagesData) {
+          repo.languages = languagesData;
         })
         .catch(function(err) {
           console.log(err);
