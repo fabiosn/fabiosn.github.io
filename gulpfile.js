@@ -5,9 +5,11 @@ var cleanCSS = require('gulp-clean-css');
 var jshint = require('gulp-jshint');
 var minify = require('gulp-minify');
 var imagemin = require('gulp-imagemin');
+var request = require('request-promise');
+var file = require('gulp-file');
 
 gulp.task('clean', function() {
-  del.sync('dist/');
+  del.sync(['dist/', '!dist/data']);
 });
 
 gulp.task('move-bower-components', ['clean'], function() {
@@ -53,6 +55,39 @@ gulp.task('process-images', function() {
   gulp.src('src/resources/images/*')
   .pipe(imagemin())
   .pipe(gulp.dest('dist/images'));
+});
+
+gulp.task('get-data', function() {
+  var requestOptions = {
+    headers: {
+      'User-Agent': 'fabiosn.github.io',
+      'Authorization': `token ${process.env.ACCESS_TOKEN}`,
+    },
+    json: true,
+  };
+
+  //get user data
+  requestOptions.uri = 'https://api.github.com/users/fabiosn';
+
+  request(requestOptions)
+  .then(function(userData) {
+    file('user.json', JSON.stringify(userData), { src: true })
+    .pipe(gulp.dest('dist/data'));
+  })
+  .catch(function(err) {
+    console.log(err);
+  });
+
+  //just checking the rate_limit
+  requestOptions.uri = 'https://api.github.com/rate_limit';
+
+  request(requestOptions)
+  .then(function(response) {
+    console.log('Remaining requests: ' + response.rate.remaining);
+  })
+  .catch(function(err) {
+    console.log(err);
+  });
 });
 
 gulp.task('default', ['move-bower-components', 'minify-css', 'process-js', 'process-images'], function() {
