@@ -7,6 +7,7 @@ var minify = require('gulp-minify');
 var imagemin = require('gulp-imagemin');
 var request = require('request-promise');
 var file = require('gulp-file');
+var concat = require('gulp-concat');
 
 gulp.task('clean', function() {
   del.sync(['dist/**/*', '!dist/data', '!dist/data/user.json', '!dist/data/repos.json']);
@@ -39,7 +40,8 @@ gulp.task('minify-css', function() {
 });
 
 gulp.task('process-js', function() {
-  gulp.src('src/scripts/*.js')
+  gulp.src('src/scripts/**/*.js')
+  .pipe(concat('app.js'))
   .pipe(jshint())
   .pipe(jshint.reporter('jshint-stylish'))
   .pipe(minify({
