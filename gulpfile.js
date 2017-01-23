@@ -9,7 +9,7 @@ var request = require('request-promise');
 var file = require('gulp-file');
 
 gulp.task('clean', function() {
-  del.sync(['dist/', '!dist/data']);
+  del.sync(['dist/**/*', '!dist/data', '!dist/data/user.json', '!dist/data/repos.json']);
 });
 
 gulp.task('move-bower-components', ['clean'], function() {
