@@ -1,5 +1,4 @@
-
-angular.module("fabiosnApp", []).controller('MainController', ['$scope', '$rootScope', '$http', function($scope, $rootScope, $http) {
+angular.module("fabiosnApp", []).controller('MainCtrl', ['$scope', '$rootScope', '$http', function($scope, $rootScope, $http) {
   $http.get('dist/data/user.json').then(
     function(response) {
       $scope.user = response.data;
@@ -18,4 +17,3 @@ angular.module("fabiosnApp", []).controller('MainController', ['$scope', '$rootS
 
   $rootScope.keys = Object.keys;
 }]);
-

@@ -1,0 +1,19 @@
+<div class="col-xs-12 col-sm-7">
+  <h3 class="text-center">What I've been up to</h3>
+
+  <div class="panel panel-default" ng-repeat="repo in repos | orderBy: '-pushed_at'">
+    <div class="panel-body">
+      <img class="img-responsive" src="{{repo.thumbnail.download_url}}" alt="{{repo.name}} thumbnail" ng-if="repo.thumbnail">
+
+      <p ng-if="repo.description">{{repo.description}}</p>
+    </div>
+
+    <div class="panel-footer">
+      <a href="{{repo.html_url}}">
+        <i class="fa fa-github"></i> {{repo.name}}
+      </a>
+
+      <small class="languages pull-right" ng-show="repo.languages && keys(repo.languages).length > 0">[ {{keys(repo.languages).join(', ')}} ]</small>
+    </div>
+  </div>
+</div>

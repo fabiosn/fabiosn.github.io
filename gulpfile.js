@@ -40,7 +40,7 @@ gulp.task('minify-css', function() {
 });
 
 gulp.task('process-js', function() {
-  gulp.src('src/scripts/**/*.js')
+  gulp.src(['src/scripts/**/*.js', 'app/app.js', 'app/**/*.js'])
   .pipe(concat('app.js'))
   .pipe(jshint())
   .pipe(jshint.reporter('jshint-stylish'))
@@ -164,6 +164,6 @@ gulp.task('default', ['move-bower-components', 'minify-css', 'process-js', 'proc
   gulp.watch('./dist/**/*').on('change', browserSync.reload);
 
   gulp.watch('src/resources/css/*.css', ['minify-css']);
-  gulp.watch('src/scripts/*.js', ['process-js']);
+  gulp.watch(['src/scripts/*.js', 'app/**/*.js'], ['process-js']);
   gulp.watch('src/images/', ['process-images']);
 });
