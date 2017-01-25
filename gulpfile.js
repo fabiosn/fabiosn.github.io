@@ -161,6 +161,7 @@ gulp.task('default', ['move-bower-components', 'minify-css', 'process-js', 'proc
   });
 
   gulp.watch('./index.html').on('change', browserSync.reload);
+  gulp.watch('./app/partials/*').on('change', browserSync.reload);
   gulp.watch('./dist/**/*').on('change', browserSync.reload);
 
   gulp.watch('src/resources/css/*.css', ['minify-css']);
