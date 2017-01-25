@@ -6,7 +6,7 @@
       <div id="search-repos-form" class="input-group">
         <input type="text" class="text form-control" name="repoFilter" placeholder="Filter by name, desc. and/or languages" aria-label="repository-filter" ng-model="searchParam">
         <span class="input-group-btn">
-          <button id="cancel-search-button" class="btn btn-default" type="button">
+          <button id="cancel-search-button" class="btn btn-default" type="button" ng-click="searchParam = ''">
             <i class="fa fa-times" aria-hidden="true"></i>
           </button>
 
