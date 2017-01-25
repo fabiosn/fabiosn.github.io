@@ -164,6 +164,6 @@ gulp.task('default', ['move-bower-components', 'minify-css', 'process-js', 'proc
   gulp.watch('./dist/**/*').on('change', browserSync.reload);
 
   gulp.watch('src/resources/css/*.css', ['minify-css']);
+  gulp.watch('src/resources/images/*', ['process-images']);
   gulp.watch(['src/scripts/*.js', 'app/**/*.js'], ['process-js']);
-  gulp.watch('src/images/', ['process-images']);
 });
