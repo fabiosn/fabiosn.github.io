@@ -3,10 +3,10 @@
 
   <div class="row">
     <div class="col-xs-12">
-      <div class="input-group">
+      <div id="search-repos-form" class="input-group">
         <input type="text" class="text form-control" name="repoFilter" placeholder="Filter by name, desc. and/or languages" aria-label="repository-filter" ng-model="searchParam">
         <span class="input-group-btn">
-          <button class="btn btn-default" type="button">
+          <button id="cancel-search-button" class="btn btn-default" type="button">
             <i class="fa fa-times" aria-hidden="true"></i>
           </button>
 
@@ -18,7 +18,7 @@
     </div>
   </div>
 
-  <div class="panel panel-default" ng-repeat="repo in repos | orderBy: '-pushed_at' | byName: searchParam">
+  <div class="panel panel-default" ng-repeat="repo in repos | orderBy: '-pushed_at' | byNameDescOrLanguage: searchParam">
     <div class="panel-body">
       <img class="img-responsive" src="{{repo.thumbnail.download_url}}" alt="{{repo.name}} thumbnail" ng-if="repo.thumbnail">
 

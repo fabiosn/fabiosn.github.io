@@ -1,5 +1,5 @@
 angular.module('fabiosnApp')
-.filter('byName', function() {
+.filter('byNameDescOrLanguage', function() {
   return function(repos, searchParam) {
     searchParam = searchParam.toLowerCase();
 

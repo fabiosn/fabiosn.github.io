@@ -24,6 +24,18 @@ body > .container {
   }
 }
 
+#search-repos-form {
+  margin-bottom: 10px;
+}
+
+#search-repos-form input {
+  border-right: 0;
+}
+
+#cancel-search-button {
+  border-left: 0;
+}
+
 .panel {
   color: black;
   border-radius: 0;
