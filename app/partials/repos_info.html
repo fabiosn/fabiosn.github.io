@@ -3,7 +3,7 @@
 
   <div class="row">
     <div class="col-xs-12">
-      <div id="search-repos-form" class="input-group">
+      <div id="search-repos-form" class="input-group" ng-hide="true">
         <input type="text" class="text form-control" name="repoFilter" placeholder="Filter by name, desc. and/or languages" aria-label="repository-filter" ng-model="searchParam">
         <span class="input-group-btn">
           <button id="cancel-search-button" class="btn btn-default" type="button" ng-click="searchParam = ''">
