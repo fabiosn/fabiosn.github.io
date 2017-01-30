@@ -91,6 +91,8 @@ gulp.task('get-data', function() {
     //get thumbnail
     var requestPromises = [];
 
+    reposData = reposData.filter(function(repo) { return !repo.fork });
+
     reposData.map(function(repo) {
       requestOptions.uri = repo.contents_url.replace(/{.*}/, 'dist/images/thumbnail.png');
 
