@@ -26,6 +26,9 @@ gulp.task('move-bower-components', ['clean'], function() {
   gulp.src('bower_components/angular/angular.min.js')
   .pipe(gulp.dest('dist/js'));
 
+  gulp.src('bower_components/angular-route/angular-route.min.js')
+  .pipe(gulp.dest('dist/js'));
+
   gulp.src('bower_components/font-awesome/css/font-awesome.min.css')
   .pipe(gulp.dest('dist/css'));
 
